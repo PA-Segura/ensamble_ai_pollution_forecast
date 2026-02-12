@@ -11,7 +11,7 @@ import pandas as pd
 import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from operativo_pro_01 import ForecastConfig, ModelManager, main
+from 7_operativo import ForecastConfig, ModelManager, main
 from .forecast_utils2 import ForecastSystem, ForecastBatchProcessor
 import torch
 import os

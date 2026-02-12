@@ -76,13 +76,13 @@ def run_daily_cleanup(scheduler):
     schedule_daily_cleanup(scheduler)
 
 def run_forecast():
-    """Ejecuta operativo_pro_01.py"""
+    """Ejecuta 7_operativo.py"""
     try:
-        print(f"🚀 Ejecutando operativo_pro_01.py...")
+        print(f"🚀 Ejecutando 7_operativo.py...")
         print("=" * 50)
         
         # Ejecutar el proceso directamente en la terminal (sin capturar salida)
-        result = subprocess.run([sys.executable, "operativo_pro_01.py"], 
+        result = subprocess.run([sys.executable, "7_operativo.py"], 
                               timeout=3600)
         
         print("=" * 50)

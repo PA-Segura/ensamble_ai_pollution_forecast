@@ -31,7 +31,7 @@ from utils import read_json
 import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from operativo_pro_01 import ForecastConfig, ModelManager
+from 7_operativo import ForecastConfig, ModelManager
 from .forecast_utils2 import ForecastSystem, ForecastBatchProcessor
 
 

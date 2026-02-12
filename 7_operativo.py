@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-operativo_pro_01.py - Sistema de Inferencia en Tiempo Real para Pronóstico de Contaminación
+7_operativo.py - Sistema de Inferencia en Tiempo Real para Pronóstico de Contaminación
 
 Script modularizado para realizar pronósticos de contaminación del aire
 usando modelos de deep learning y datos meteorológicos WRF.
@@ -390,7 +390,7 @@ class ForecastConfig:
         """
         try:
             # Importar y usar el módulo específico de PostgreSQL
-            from postgres_query_helper import get_ozone_target_datetime
+            from operativo_files.postgres_query_helper import get_ozone_target_datetime
             return get_ozone_target_datetime()
             
         except ImportError as e:
@@ -707,7 +707,7 @@ def main():
         # 1. POSTGRESQL (Producción - ID Tipo Pronóstico = 7)
         if config.SAVE_TO_POSTGRES:
             try:
-                from save_predictions_postgres import save_predictions_to_postgres
+                from operativo_files.save_predictions_postgres import save_predictions_to_postgres
                 
                 print("🐘 EXPORTANDO A POSTGRESQL...")
                 postgres_result = save_predictions_to_postgres(
@@ -734,7 +734,7 @@ def main():
         # 2. SQLITE LOCAL (Respaldo/Debug)
         if config.SAVE_TO_SQLITE:
             try:
-                from save_predictions_sqlite import save_predictions_to_sqlite
+                from operativo_files.save_predictions_sqlite import save_predictions_to_sqlite
                 
                 print("\n🗄️ EXPORTANDO A SQLITE...")
                 sqlite_result = save_predictions_to_sqlite(

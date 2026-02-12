@@ -456,7 +456,7 @@ class ForecastBatchProcessor:
 class WRFProcessor:
     """Procesador de archivos WRF que ejecuta process_wrf_files_like_in_train.py para generar archivos necesarios."""
     
-    def __init__(self, operativo_script_path: str = 'process_wrf_files_like_in_train.py'):
+    def __init__(self, operativo_script_path: str = 'operativo_files/process_wrf_files_like_in_train.py'):
         self.operativo_script_path = operativo_script_path
         
     def process_wrf_files(self, target_datetime: str, config_file_path: str, 

@@ -10,7 +10,7 @@ pronósticos de contaminación.
 import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from operativo_pro_01 import main
+from 7_operativo import main
 
 # Ejecutar con configuración por defecto
 predicciones = main()
@@ -18,7 +18,7 @@ predicciones = main()
 # %%
 import os
 # sys.path ya configurado arriba
-from operativo_pro_01 import main, ForecastConfig, ModelManager
+from 7_operativo import main, ForecastConfig, ModelManager
 from .forecast_utils2 import ForecastSystem
 
 def ejemplo_basico():
@@ -122,8 +122,8 @@ if __name__ == "__main__":
         print(f"✅ Ejemplo personalizado: {len(predicciones_personalizadas)} horas")
     
     print("\n💡 Para usar en tu código:")
-    print("   from operativo_pro_01 import main")
+    print("   from 7_operativo import main")
     print("   predicciones = main()")
     print("\n💡 Para configuración personalizada:")
-    print("   from operativo_pro_01 import ForecastConfig, ModelManager")
+    print("   from 7_operativo import ForecastConfig, ModelManager")
     print("   from .forecast_utils2 import ForecastSystem") 

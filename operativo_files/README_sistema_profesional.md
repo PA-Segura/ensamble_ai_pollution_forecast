@@ -13,19 +13,19 @@ Sistema modularizado y profesional para realizar pronósticos de contaminación 
 - **Logging mejorado**: Mensajes informativos y de progreso
 - **Documentación completa**: Docstrings y comentarios profesionales
 - **Validaciones automáticas**: Verificación de datos y configuraciones
-- **Procesamiento WRF mejorado**: Ejecuta process_wrf_files_like_in_train.py para generar archivos WRF con consistencia total del entrenamiento
+- **Procesamiento WRF mejorado**: Ejecuta operativo_files/process_wrf_files_like_in_train.py para generar archivos WRF con consistencia total del entrenamiento
 - **Compatibilidad preservada**: Mantiene la funcionalidad del sistema original
 
 ### 🔧 Conservado del Original
 - **FORCE_DEFAULTS_FOR_DEBUG**: Sistema de debugging sin argparse
 - **Configuración por argumentos**: Soporte completo para línea de comandos
-- **Ejecución de process_wrf_files_like_in_train.py**: Procesamiento WRF mejorado con función del entrenamiento
+- **Ejecución de operativo_files/process_wrf_files_like_in_train.py**: Procesamiento WRF mejorado con función del entrenamiento
 - **Funcionalidad idéntica**: Mismos resultados que el sistema original
 
 ## 📁 Estructura de Archivos
 
 ```
-├── operativo_pro_01.py        # Script principal profesional
+├── 7_operativo.py             # Script principal profesional
 ├── forecast_utils2.py         # Módulo de utilidades profesional
 ├── operativo_barrido_fechas.py # Script para barrido de fechas
 ├── ejemplo_uso.py             # Ejemplos de uso básico
@@ -54,7 +54,7 @@ Este script verifica:
 
 ### Método 1: Ejecución Simple
 ```python
-from operativo_pro_01 import main
+from 7_operativo import main
 
 # Ejecutar con configuración por defecto
 predicciones = main()
@@ -79,7 +79,7 @@ python operativo_barrido_fechas.py \
 
 ### Método 2: Configuración Personalizada
 ```python
-from operativo_pro_01 import ForecastConfig, ModelManager
+from 7_operativo import ForecastConfig, ModelManager
 from forecast_utils2 import ForecastSystem
 
 # Configurar parámetros
@@ -99,8 +99,8 @@ predicciones = forecast_system.run_forecast(config.target_datetime, config.confi
 
 ### Método 3: Línea de Comandos
 ```bash
-# Cambiar FORCE_DEFAULTS_FOR_DEBUG = False en operativo_pro_01.py
-python operativo_pro_01.py --target-datetime "2023-12-13 07:00:00" --verbose
+# Cambiar FORCE_DEFAULTS_FOR_DEBUG = False en 7_operativo.py
+python 7_operativo.py --target-datetime "2023-12-13 07:00:00" --verbose
 ```
 
 ## ⚙️ Configuración
@@ -135,9 +135,9 @@ model = model_manager.build_and_load_model()
 ```
 
 ### 🌤️ WRFProcessor
-Procesador que ejecuta process_wrf_files_like_in_train.py para generar archivos WRF con consistencia del entrenamiento.
+Procesador que ejecuta operativo_files/process_wrf_files_like_in_train.py para generar archivos WRF con consistencia del entrenamiento.
 ```python
-wrf_processor = WRFProcessor('process_wrf_files_like_in_train.py')
+wrf_processor = WRFProcessor('operativo_files/process_wrf_files_like_in_train.py')
 success = wrf_processor.process_wrf_files(target_datetime, config_file)
 ```
 
@@ -309,7 +309,7 @@ python operativo_barrido_fechas.py \
 
 #### Programáticamente
 ```python
-from operativo_pro_01 import ForecastConfig, ModelManager
+from 7_operativo import ForecastConfig, ModelManager
 from forecast_utils2 import ForecastSystem, ForecastBatchProcessor
 
 # Configurar sistema
@@ -369,7 +369,7 @@ python operativo_barrido_fechas.py \
 #### Verificar Completitud
 ```python
 from forecast_utils2 import ForecastBatchProcessor
-from operativo_pro_01 import ForecastConfig, ModelManager
+from 7_operativo import ForecastConfig, ModelManager
 
 # Configurar procesador
 config = ForecastConfig()

@@ -18,11 +18,11 @@ def verificar_archivos_existentes():
     print("🔍 VERIFICANDO ARCHIVOS NECESARIOS...")
     
     archivos_requeridos = [
-        'operativo_pro_01.py',
+        '7_operativo.py',
         'forecast_utils2.py',
         'operativo_barrido_fechas.py',
         'ejemplo_barrido_fechas.py',
-        'process_wrf_files_like_in_train.py',
+        'operativo_files/process_wrf_files_like_in_train.py',
         'operativo_01.py',
         'ejemplo_uso.py',
         'README_sistema_profesional.md'
@@ -50,10 +50,10 @@ def verificar_imports():
     print("\n🔍 VERIFICANDO IMPORTS...")
     
     try:
-        from operativo_pro_01 import ForecastConfig, ModelManager, main
-        print("   ✅ operativo_pro_01 imports OK")
+        from 7_operativo import ForecastConfig, ModelManager, main
+        print("   ✅ 7_operativo imports OK")
     except ImportError as e:
-        print(f"   ❌ operativo_pro_01 import ERROR: {e}")
+        print(f"   ❌ 7_operativo import ERROR: {e}")
         return False
     
     try:
@@ -73,7 +73,7 @@ def verificar_configuracion():
     print("\n🔍 VERIFICANDO CONFIGURACIÓN...")
     
     try:
-        from operativo_pro_01 import ForecastConfig
+        from 7_operativo import ForecastConfig
         
         # Configuración por defecto
         config = ForecastConfig()
@@ -137,7 +137,7 @@ def verificar_flujo_completo():
     print("\n🔍 VERIFICANDO FLUJO COMPLETO...")
     
     try:
-        from operativo_pro_01 import ForecastConfig, ModelManager
+        from 7_operativo import ForecastConfig, ModelManager
         from .forecast_utils2 import ForecastSystem
         
         # 1. Configuración
@@ -147,7 +147,7 @@ def verificar_flujo_completo():
         
         # 2. Verificar archivos necesarios
         config_file_exists = os.path.exists(config.config_file_path)
-        process_wrf_exists = os.path.exists('process_wrf_files_like_in_train.py')
+        process_wrf_exists = os.path.exists('operativo_files/process_wrf_files_like_in_train.py')
         
         print(f"   ✅ Config file exists: {config_file_exists}")
         print(f"   ✅ process_wrf_files_like_in_train.py exists: {process_wrf_exists}")
@@ -159,7 +159,7 @@ def verificar_flujo_completo():
             print("   ⚠️  process_wrf_files_like_in_train.py no encontrado, pero flujo OK")
         
         # 3. Verificar que main() puede ser importada
-        from operativo_pro_01 import main
+        from 7_operativo import main
         print("   ✅ main() importada correctamente")
         
         return True
@@ -256,7 +256,7 @@ def main():
         print("\n🎉 ¡TODOS LOS TESTS EXITOSOS!")
         print("✅ El sistema está listo para usar")
         print("\n💡 Para probar el sistema completo:")
-        print("   python operativo_pro_01.py")
+        print("   python 7_operativo.py")
         print("   # o")
         print("   python ejemplo_uso.py")
         
