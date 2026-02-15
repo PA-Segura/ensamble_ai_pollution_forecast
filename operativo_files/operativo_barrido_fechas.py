@@ -24,7 +24,7 @@ import pandas as pd
 import torch
 
 # Imports del proyecto
-from parse_config import ConfigParser
+from conf.parse_config import ConfigParser
 from utils import read_json
 
 # Import del módulo de utilidades

@@ -52,7 +52,7 @@ def ejemplo_barrido_con_validacion():
         config_path = 'test_Parallel_all_prev24_heads4_w4_p4_ar8_bootstrapTrue_thresh2_weather4_2_0701_101128.json'
         
         # Simular configuración del sistema
-        from parse_config import ConfigParser
+        from conf.parse_config import ConfigParser
         from utils import read_json
         
         raw_config = read_json(config_path)

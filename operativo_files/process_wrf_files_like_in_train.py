@@ -35,13 +35,24 @@ from pathlib import Path
 
 
 
-# Agregar path del proyecto si es necesario
-project_path = os.path.dirname(os.path.abspath(__file__))
+# Agregar path del proyecto (directorio raíz) si es necesario
+# IMPORTANTE: Debe estar ANTES de cualquier import para que Python busque primero en el raíz
+current_file_dir = os.path.dirname(os.path.abspath(__file__))
+project_path = os.path.dirname(current_file_dir)  # Subir un nivel al directorio raíz
+# Insertar al inicio para que tenga prioridad sobre el directorio actual
 if project_path not in sys.path:
-    sys.path.append(project_path)
+    sys.path.insert(0, project_path)
+# Remover el directorio actual de sys.path temporalmente para evitar conflictos
+current_dir_in_path = current_file_dir in sys.path
+if current_dir_in_path:
+    sys.path.remove(current_file_dir)
 
-# Imports del proyecto
-from parse_config import ConfigParser
+# Imports del proyecto (ahora buscará primero en project_path)
+from conf.parse_config import ConfigParser
+
+# Restaurar el directorio actual si estaba antes
+if current_dir_in_path:
+    sys.path.append(current_file_dir)
 from conf.localConstants import wrfFileType
 
 # %%

@@ -6,7 +6,7 @@ from dash import dcc, html, Input, Output
 import plotly.graph_objs as go
 from plotly.subplots import make_subplots
 import argparse
-from parse_config import ConfigParser
+from conf.parse_config import ConfigParser
 import numpy as np
 from typing import List, Dict, Optional, Tuple
 from sklearn.metrics import mean_squared_error

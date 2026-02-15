@@ -5,7 +5,7 @@ import dash
 from dash import dcc, html, Input, Output
 import plotly.graph_objs as go
 import argparse
-from parse_config import ConfigParser
+from conf.parse_config import ConfigParser
 import numpy as np
 from typing import List, Dict, Optional, Tuple
 import glob

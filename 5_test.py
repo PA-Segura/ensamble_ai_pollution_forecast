@@ -8,7 +8,7 @@ import data_loader.data_loaders as module_data
 import model.loss as module_loss
 import model.metric as module_metric
 import model.model as module_arch
-from parse_config import ConfigParser
+from conf.parse_config import ConfigParser
 from proj_preproc.viz import visualize_batch_data, visualize_pollution_input
 from proj_io.inout import generateDateColumns
 from proj_preproc.normalization import denormalize_data
