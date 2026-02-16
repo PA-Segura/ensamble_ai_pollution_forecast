@@ -1,6 +1,6 @@
-# ensamble_ai_pollution_forecast
+# Pronóstico de calidad del aire con aprendizaje automático modelo ViT
 
-Sistema de pronóstico de contaminación atmosférica basado en un modelo **Vision Transformer** (PyTorch). Tiene dos flujos principales: **entrenamiento** de modelos y **pronóstico operativo** horario.
+Este repositorio contien el código fuente para un sistema de pronóstico de contaminación atmosférica de basado en un modelo **Vision Transformer** (PyTorch). El sistema tiene dos flujos de trabajos principales: **entrenamiento** de modelos y **pronóstico operativo** horario.
 
 ## Estructura del proyecto
 
@@ -112,6 +112,8 @@ python run_forecast_hourly.py
 
 Ver `docs/` para documentación detallada:
 
-- `FLUJO_ENTRENAMIENTO_RESUMEN.md` — Flujo completo de entrenamiento
-- `FLUJO_PRONOSTICO_OPERATIVO_RESUMEN.md` — Flujo completo del pronóstico operativo
+- `ARCHIVO_config_json.md` — Estructura y campos del archivo JSON de configuración
+- `FLUJO_ENTRENAMIENTO_RESUMEN.md` — Flujo resumido de entrenamiento
+- `FLUJO_PRONOSTICO_OPERATIVO_RESUMEN.md` — Flujo resumido del pronóstico operativo
 - `README_parallel_training.md` — Entrenamiento paralelo con barrido de hiperparámetros
+- `config_and_train.md` — Configuración y entrenamiento del framework

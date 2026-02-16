@@ -352,12 +352,3 @@ Para usar 6 horas previas + 3 futuras (10 pasos totales):
 // arch.args:
 "weather_time_dims": 10,  // 6 + 3 + 1
 ```
-
----
-
-## Referencias
-
-- Template original: [victoresque/pytorch-template](https://github.com/victoresque/pytorch-template)
-- Fork usado como base: [fsu-sc/ml_torch_templates](https://github.com/fsu-sc/ml_torch_templates)
-- Flujo completo: `docs/FLUJO_ENTRENAMIENTO_RESUMEN.md`
-- Entrenamiento paralelo: `docs/README_parallel_training.md`

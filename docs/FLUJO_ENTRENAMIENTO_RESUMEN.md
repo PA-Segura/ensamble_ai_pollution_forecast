@@ -166,43 +166,6 @@ Se enlistan pasos principales scripts y configuracioens relevantes para cada pas
 5. **Actualizar archivo JSON** - Actualizar paths del modelo entrenado y rutas de predicción
 6. **`5_test.py`** - Evalúa modelo y genera CSVs de evaluación
 
----
-
-## Flujo de Datos Simplificado
-
-```
-Archivos WRF Históricos
-    ↓
-1_MakeNetcdf_From_WRF.py
-    ↓
-netCDFs diarios [{YYYY-MM-DD}.nc]
-    ↓
-PostgreSQL → Datos de contaminación históricos
-    ↓
-2_MakeCSV_From_DB.py
-    ↓
-CSVs [{contaminante}_{estacion}.csv]
-    ↓
-4_train.py
-    ├─> DataLoader carga desde netCDFs y CSVs
-    ├─> [Si no existe] Genera archivo de normalización (YAML)
-    ├─> Normaliza datos
-    └─> Guarda datos procesados en pickle
-    ↓
-Modelo Entrenado [model_best.pth]
-    ↓
-Actualizar archivo JSON (paths del modelo y predicción)
-    ↓
-5_test.py
-    ├─> Carga modelo y datos de test
-    ├─> Ejecuta inferencia
-    └─> Genera CSVs de evaluación
-    ↓
-CSVs de Evaluación [{model_name}_forecast_{hour}.csv]
-```
-
----
-
 ## Configuración Clave
 
 ### Parámetros del Modelo (desde config JSON):
@@ -213,28 +176,14 @@ CSVs de Evaluación [{model_name}_forecast_{hour}.csv]
 - `data_folder`: Ruta a carpeta con netCDFs y CSVs generados
 - `norm_params_file`: Archivo de parámetros de normalización (se genera automáticamente)
 
+Para más información ver documentación del configuración ./docs/ARCHIVO_config_json.md
+
 ### Rutas Importantes:
 - netCDFs procesados: `{output_folder}/{YYYY-MM-DD}.nc`
 - CSVs de contaminación: `{output_folder}/{contaminante}_{estacion}.csv`
 - Modelo entrenado: `{save_dir}/model_best.pth`
 - Archivos de normalización: `{norm_params_file}` (YAML)
 - CSVs de evaluación: `{prediction_path}/{model_name}_forecast_{hour+1}.csv`
-
----
-
-## Notas Importantes
-
-1. **Orden de Ejecución:** Los scripts deben ejecutarse en orden: generación de datos (1 y 2), entrenamiento (4), y evaluación (5). Antes de ejecutar la evaluación, actualizar el archivo JSON con los paths correctos.
-
-2. **Generación Automática de Normalización:** Los archivos de normalización (YAML) se generan automáticamente durante la inicialización del DataLoader si no existen.
-
-3. **Consistencia de Datos:** Los netCDFs generados deben usar el mismo procesamiento que en el operativo para garantizar consistencia.
-
-4. **Ventanas Temporales:** Las ventanas de datos deben ser consistentes entre entrenamiento e inferencia.
-
-5. **Formato WRF:** El sistema maneja dos formatos WRF: antiguo (≤2018) y nuevo (>2018).
-
-6. **Actualización de Configuración para Evaluación:** Antes de ejecutar `5_test.py`, es necesario actualizar el archivo JSON con los paths correctos del modelo entrenado (`test.all_models_path`, `test.model_path`) y la ruta de predicciones (`test.prediction_path`).
 
 ---
 
