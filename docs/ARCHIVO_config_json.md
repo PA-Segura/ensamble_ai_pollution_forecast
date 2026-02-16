@@ -1,4 +1,4 @@
-# Configuración JSON del Modelo
+# Configuración del Modelo vía config file (JSON)
 
 El archivo JSON de configuración define experimentos de modelos de aprendizaje automático: arquitectura del modelo, datos, entrenamiento, optimización e inferencia. Es parseado por `ConfigParser` (`conf/parse_config.py`), que usa el mecanismo `init_obj` para instanciar dinámicamente clases y funciones desde los módulos del proyecto.
 
