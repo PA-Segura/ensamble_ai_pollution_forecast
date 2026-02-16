@@ -1,8 +1,7 @@
 # Flujo de Trabajo del Entrenamiento
 
-Este documento describe el flujo resumido del sistema de entrenamiento de modelos de pronóstico de contaminación atmosférica.
+Este documento describe el flujo resumido del sistema de entrenamiento de modelos de pronóstico de contaminación atmosférica. Este proyecto de aprendizaje automático se desarrolló con la estructura y base de la plantilla de proyectos de aprendizaje automático en Pytorch: https://github.com/fsu-sc/ml_torch_templates
 
-Este proyecto de aprendizaje automático 
 ---
 
 ## Flujo de trabajo para entrenamientos
@@ -13,37 +12,37 @@ Se enlistan pasos principales scripts y configuracioens relevantes para cada pas
 ## Diagrama de Flujo Simplificado
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│ 1. GENERACIÓN DE BASES DE DATOS                             │
-│                                                             │
-│ ┌──────────────────────┐  ┌─────────────────────────────┐ │
-│ │ 1_MakeNetcdf_From_   │  │ 2_MakeCSV_From_DB.py        │ │
-│ │    WRF.py            │  │                             │ │
-│ │                      │  │                             │ │
-│ │ WRF Históricos       │  │ PostgreSQL                  │ │
-│ │ (Reanálisis)         │  │ (Contaminación)             │ │
-│ │                      │  │                             │ │
-│ │ ↓                    │  │ ↓                           │ │
-│ │ netCDFs diarios      │  │ CSVs por estación/         │ │
-│ │ (Meteorología)       │  │   contaminante              │ │
-│ └──────────────────────┘  └─────────────────────────────┘ │
+┌────────────────────────────────────────────────────────────┐
+│ 1. GENERACIÓN DE BASES DE DATOS                            │
+│                                                            │
+│ ┌──────────────────────┐  ┌─────────────────────────────┐  │
+│ │ 1_MakeNetcdf_From_   │  │ 2_MakeCSV_From_DB.py        │  │
+│ │    WRF.py            │  │                             │  │
+│ │                      │  │                             │  │
+│ │ WRF Históricos       │  │ PostgreSQL                  │  │
+│ │ (Reanálisis)         │  │ (Contaminación)             │  │
+│ │                      │  │                             │  │
+│ │ ↓                    │  │ ↓                           │  │
+│ │ netCDFs diarios      │  │ CSVs por estación/          │  │
+│ │ (Meteorología)       │  │   contaminante              │  │
+│ └──────────────────────┘  └─────────────────────────────┘  │
 └──────────────────────┬───────────────────┬─────────────────┘
                        │                   │
                        ▼                   ▼
 ┌─────────────────────────────────────────────────────────────┐
-│ Datos Generados (netCDFs + CSVs)                             │
+│ Datos Generados (netCDFs + CSVs)                            │
 │                                                             │
 │ • netCDFs diarios: {YYYY-MM-DD}.nc                          │
-│ • CSVs: {contaminante}_{estacion}.csv                      │
+│ • CSVs: {contaminante}_{estacion}.csv                       │
 └──────────────────────┬──────────────────────────────────────┘
                        │
                        ▼
 ┌─────────────────────────────────────────────────────────────┐
-│ 2. CONFIGURACIÓN                                             │
+│ 2. CONFIGURACIÓN                                            │
 │                                                             │
-│ Archivo JSON de Configuración                                │
-│ • Parámetros de modelo                                       │
-│ • Parámetros de data loader                                  │
+│ Archivo JSON de Configuración                               │
+│ • Parámetros de modelo                                      │
+│ • Parámetros de data loader                                 │
 │ • Hiperparámetros de entrenamiento                          │
 └──────────────────────┬──────────────────────────────────────┘
                        │
@@ -78,7 +77,7 @@ Se enlistan pasos principales scripts y configuracioens relevantes para cada pas
                        ▼
 ┌─────────────────────────────────────────────────────────────┐
 │ 5_test.py                                                   │
-│ [Evaluación del Modelo]                                      │
+│ [Evaluación del Modelo]                                     │
 │                                                             │
 │ 1. Carga modelo entrenado (model_best.pth)                  │
 │ 2. Carga datos de test                                      │
@@ -88,37 +87,6 @@ Se enlistan pasos principales scripts y configuracioens relevantes para cada pas
 │    ├─> Datos desnormalizados                                │
 │    └─> Métricas (RMSE)                                      │
 └─────────────────────────────────────────────────────────────┘
-```
-
-```
-1. GENERACIÓN DE BASES DE DATOS
-    │
-    ├─> 1_MakeNetcdf_From_WRF.py
-    │   └─> Se generan netCDFs diarios desde base de datos histórica WRF
-    │
-    └─> 2_MakeCSV_From_DB.py
-        └─> Se generan archivos CSVs con concentraciones de contaminantes a partir de la base de datos PostgreSQL "contingencia" desplegada con base en proyecto [[https://github.com/olmozavala/cca_cont]]
-
-2. CONFIGURACIÓN
-    │
-    └─> Archivo JSON de configuración de modelo.
-        └─> Parámetros de entrenamiento
-
-3. ENTRENAMIENTO
-    │
-    └─> 4_train.py
-        └─> Ejecuta entrenamiento del modelo
-        └─> DataLoader carga directamente desde netCDFs y CSVs
-        └─> Comando: python 4_train.py -c config.json
-
-4. EVALUACIÓN
-    │
-    ├─> Actualizar archivo JSON
-    │   └─> Actualizar paths del modelo entrenado y rutas de predicción
-    │
-    └─> 5_test.py
-        └─> Genera CSVs de evaluación con predicciones y targets
-        └─> Comando: python 5_test.py -c config.json
 ```
 
 ---
