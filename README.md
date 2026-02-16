@@ -92,7 +92,7 @@ Instalación de dependencias:
 pip install -r requirements.txt
 ```
 
-## Uso rápido
+## Comandos útiles:
 
 ```bash
 # Entrenamiento
