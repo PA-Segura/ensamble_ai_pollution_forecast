@@ -1,14 +1,14 @@
 # ensamble_ai_pollution_forecast
 
-Sistema de pronóstico de contaminación atmosférica basado en un modelo **MultiStreamTransformerModel** (PyTorch). Tiene dos flujos principales: **entrenamiento** de modelos y **pronóstico operativo** horario.
+Sistema de pronóstico de contaminación atmosférica basado en un modelo **Vision Transformer** (PyTorch). Tiene dos flujos principales: **entrenamiento** de modelos y **pronóstico operativo** horario.
 
 ## Estructura del proyecto
 
 ```
 ├── 1_MakeNetcdf_From_WRF.py        # Genera netCDFs diarios desde archivos WRF históricos
-├── 2_MakeCSV_From_DB.py             # Extrae CSVs de contaminantes desde PostgreSQL
+├── 2_MakeCSV_From_DB.py             # Extrae CSVs de contaminantes desde base de datos PostgreSQL "contingencia"
 ├── 4_train.py                       # Entrenamiento del modelo
-├── 4b_parallel_training.py          # Entrenamiento paralelo (barrido de hiperparámetros)
+├── 4b_parallel_training.py          # Entrenamiento paralelo de multiples modelos
 ├── 5_test.py                        # Evaluación del modelo entrenado
 ├── 5b_parallel_testing.py           # Evaluación paralela de múltiples modelos
 ├── 6a_dashboard_singlemodel.py      # Dashboard interactivo (Dash) de predicciones
@@ -34,7 +34,7 @@ Sistema de pronóstico de contaminación atmosférica basado en un modelo **Mult
 ├── tests/                # Tests (pytest)
 ├── saved_confs/          # Configuraciones generadas para entrenamiento paralelo
 ├── docs/                 # Documentación detallada
-└── deprecated/           # Código obsoleto
+└── deprecated/           # Código obsoleto o usado en desarrollo
 ```
 
 ## Flujos de trabajo
@@ -43,7 +43,7 @@ Sistema de pronóstico de contaminación atmosférica basado en un modelo **Mult
 
 ```
 1_MakeNetcdf_From_WRF.py  →  Genera netCDFs diarios desde WRF
-2_MakeCSV_From_DB.py       →  Genera CSVs de contaminantes desde PostgreSQL
+2_MakeCSV_From_DB.py       →  Genera CSVs de contaminantes desde base de datos PostgreSQL "contingencia"
 4_train.py -c config.json  →  Entrena modelo (DataLoader carga netCDFs + CSVs)
 5_test.py  -c config.json  →  Evalúa modelo, genera CSVs de predicciones
 ```
