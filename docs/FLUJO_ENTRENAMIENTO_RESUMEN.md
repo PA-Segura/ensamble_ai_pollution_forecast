@@ -49,33 +49,30 @@ Se enlistan pasos principales scripts y configuracioens relevantes para cada pas
                        │
                        ▼
 ┌─────────────────────────────────────────────────────────────┐
-│ 4_train.py                                                   │
-│ [Entrenamiento del Modelo]                                   │
+│ 4_train.py                                                  │
+│ [Entrenamiento del Modelo]                                  │
 │                                                             │
-│ 1. Carga configuración                                       │
-│ 2. Construye modelo                                          │
-│ 3. Inicializa Trainer                                        │
+│ 1. Carga configuración                                      │
+│ 2. Construye modelo                                         │
+│ 3. Inicializa Trainer                                       │
 │    └─> Inicializa DataLoader                                │
-│        ├─> Carga datos desde netCDFs y CSVs                │
-│        ├─> [Si no existe:] Genera archivo de               │
+│        ├─> Carga datos desde netCDFs y CSVs                 │
+│        ├─> [Si no existe:] Genera archivo de                │
 │        │   normalización (YAML)                             │
 │        ├─> Normaliza datos                                  │
 │        └─> Guarda datos procesados en pickle                │
-│ 4. Ejecuta entrenamiento                                     │
-│    ├─> Bucle de épocas                                       │
+│ 4. Ejecuta entrenamiento                                    │
+│    ├─> Bucle de épocas                                      │
 │    │   ├─> Bucle de batches                                 │
 │    │   └─> Bucle autorregresivo                             │
-│    └─> Guarda checkpoints                                    │
+│    └─> Guarda checkpoints                                   │
 └──────────────────────┬──────────────────────────────────────┘
                        │
                        ▼
 ┌─────────────────────────────────────────────────────────────┐
-│ Actualizar archivo JSON                                      │
+│ Actualizar archivo JSON                                     │
 │ [Actualización de Configuración]                            │
 │                                                             │
-│ • Actualizar test.all_models_path                           │
-│ • Actualizar test.model_path                                │
-│ • Actualizar test.prediction_path                           │
 └──────────────────────┬──────────────────────────────────────┘
                        │
                        ▼
