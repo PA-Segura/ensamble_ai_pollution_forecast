@@ -138,10 +138,7 @@ Se enlistan pasos principales scripts y configuracioens relevantes para cada pas
 - **Comando:** `python 5_test.py -c config.json`
 - **Pasos principales:**
   1. **Actualizar archivo JSON** (antes de ejecutar)
-     - Actualizar `test.all_models_path`: Ruta base donde se guardó el modelo
-     - Actualizar `test.model_path`: Ruta relativa al modelo específico entrenado
-     - Actualizar `test.prediction_path`: Carpeta donde guardar CSVs de evaluación
-     - Actualizar `test.denormalization_file`: Archivo de normalización (mismo que entrenamiento)
+     - Actualizar Paths: `test.all_models_path`,`test.model_path`,`test.prediction_path`,`test.denormalization_file`
      - Actualizar `test.data_loader.years`: Años de datos para test
   2. Carga modelo entrenado (`model_best.pth`)
   3. Carga datos de test
