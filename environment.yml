@@ -1,0 +1,74 @@
+# Entorno conda para: Ensamble AI Pollution Forecast
+# Modelo MultiStreamTransformer (ViT) para pronóstico de contaminación atmosférica
+#
+# Creación:
+#   conda env create -f environment.yml
+# Actualización:
+#   conda env update -f environment.yml --prune
+# Activación:
+#   conda activate aieoastorch
+
+name: aieoastorch
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+
+dependencies:
+  # --- Python ---
+  - python=3.10
+
+  # --- CUDA / GPU (PyTorch con CUDA 12.1) ---
+  - pytorch>=2.3
+  - pytorch-cuda=12.1
+  - torchaudio>=2.3
+  - torchvision>=0.18
+
+  # --- Análisis de datos ---
+  - pandas>=2.2
+  - numpy>=1.26
+  - scipy>=1.13
+  - scikit-learn>=1.5
+  - xarray>=2024.1
+
+  # --- Geoespacial y meteorología ---
+  - cartopy>=0.23
+  - geopandas>=0.14
+  - netcdf4>=1.7
+  - h5py>=3.8
+
+  # --- Visualización ---
+  - matplotlib>=3.8
+  - seaborn>=0.13
+  - bokeh>=3.6
+  - folium>=0.17
+  - cmocean>=4.0
+
+  # --- Dashboard ---
+  # (dash y plotly se instalan vía pip por compatibilidad)
+
+  # --- Base de datos ---
+  - psycopg2>=2.9
+
+  # --- Monitoreo y logging ---
+  - tensorboard>=2.16
+
+  # --- Utilidades ---
+  - pyyaml>=6.0
+  - tqdm>=4.66
+  - scikit-image>=0.20
+
+  # --- Desarrollo ---
+  - ipykernel>=6.29
+  - jupyter>=1.0
+  - pytest>=8.2
+
+  # --- Paquetes pip (no disponibles en conda o mejor desde PyPI) ---
+  - pip:
+      - pytorch-tcn>=1.2
+      - torchsummary>=1.5
+      - dash>=2.17
+      - plotly>=5.22
+      - metpy>=1.6
+      - cftime>=1.6

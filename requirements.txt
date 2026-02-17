@@ -1,23 +1,54 @@
-# Dependencias para el modelo Temporal Fusion Transformer
-# Predicción de contaminación atmosférica
+# ============================================================
+# Dependencias para: Ensamble AI Pollution Forecast
+# ============================================================
+# Nota: Para entorno completo con CUDA/GPU,se recomienda usar environment.yml
+# ============================================================
 
-# Análisis de datos
-pandas>=1.5.0
-numpy>=1.21.0
-scikit-learn>=1.1.0
+# --- Análisis de datos ---
+pandas>=2.2
+numpy>=1.26
+scipy>=1.13
+scikit-learn>=1.5
+xarray>=2024.1
 
-# Visualización
-matplotlib>=3.5.0
-seaborn>=0.11.0
+# --- Deep Learning (PyTorch) ---
+# Para GPU instalar desde: https://pytorch.org/get-started/locally/
+torch>=2.3
+torchaudio>=2.3
+torchvision>=0.18
+pytorch-tcn>=1.2
+torchsummary>=1.5
 
-# Deep Learning y PyTorch
-torch>=1.12.0
-pytorch-lightning>=1.7.0
-pytorch-forecasting>=0.10.0
+# --- Geoespacial y meteorología ---
+cartopy>=0.23
+geopandas>=0.14
+netCDF4>=1.7
+h5py>=3.8
+metpy>=1.6
+cftime>=1.6
 
-# Utilidades
+# --- Visualización ---
+matplotlib>=3.8
+seaborn>=0.13
+bokeh>=3.6
+folium>=0.17
+cmocean>=4.0
+
+# --- Dashboard ---
+dash>=2.17
+plotly>=5.22
+
+# --- Base de datos ---
+psycopg2-binary>=2.9
+
+# --- Monitoreo y logging ---
+tensorboard>=2.16
+
+# --- Utilidades ---
 pyyaml>=6.0
-tqdm>=4.64.0
+tqdm>=4.66
+scikit-image>=0.20
 
-# Configuración opcional para GPU (descomenta si tienes CUDA)
-# torch>=1.12.0+cu116 -f https://download.pytorch.org/whl/torch_stable.html
+# --- Desarrollo (opcional) ---
+# pytest>=8.2
+# ipykernel>=6.29
