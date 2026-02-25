@@ -275,15 +275,6 @@ Acepta cualquier scheduler de `torch.optim.lr_scheduler`. `ReduceLROnPlateau` se
 ```bash
 # Entrenamiento básico
 python 4_train.py -c config.json
-
-# Reanudar desde checkpoint
-python 4_train.py -c config.json -r path/to/checkpoint-epoch42.pth
-
-# Seleccionar GPUs específicas
-python 4_train.py -c config.json -d 0,1
-
-# Override de hiperparámetros por CLI
-python 4_train.py -c config.json --lr 0.001 --bs 512
 ```
 
 ### Opciones CLI

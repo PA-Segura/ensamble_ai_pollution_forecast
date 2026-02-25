@@ -59,7 +59,7 @@ def getPreprocDBParams():
         # Start and end date to generate the CSVs. The dates are in python 'range' style. Start day
         # is included, last day is < than.
         DBToCSVParams.start_date: '1980-01-01',
-        DBToCSVParams.end_date: '2022-12-31',
+        DBToCSVParams.end_date: '2026-02-24',
     }
 
     return make_csv_config

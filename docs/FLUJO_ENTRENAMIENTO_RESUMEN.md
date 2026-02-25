@@ -102,6 +102,18 @@ Se enlistan pasos principales scripts y configuracioens relevantes para cada pas
   4. Guarda netCDFs diarios: `{YYYY-MM-DD}.nc`
 - **Salida:** Archivos netCDF diarios con 24 horas de datos meteorológicos procesados
 
+![Selección y preparación de archivos WRF](0_1_make_netcdf.png)
+
+*Figura 1. Vista general del proceso de selección de archivos WRF históricos que se usarán para generar los netCDF diarios.*
+
+![Procesamiento de netCDFs diarios](1_netcdf_processing.png)
+
+*Figura 2. Ejemplo del procesado antes de guardar los netCDF diarios.*
+
+![Archivos netCDF generados](2_netcdf_outs.png)
+
+*Figura 3. Ejemplo de salidas de los archivos netCDF diarios generados por el script.*
+
 ### 2. Generación de CSVs de Contaminantes: `2_MakeCSV_From_DB.py`
 - **Función:** Extrae datos de contaminación desde PostgreSQL
 - **Pasos principales:**
@@ -109,6 +121,14 @@ Se enlistan pasos principales scripts y configuracioens relevantes para cada pas
   2. Para cada estación y contaminante: consulta datos históricos
   3. Guarda CSVs: `{contaminante}_{estacion}.csv`
 - **Salida:** Archivos CSV con series temporales por estación y contaminante
+
+![Consulta a base de datos de contaminación](3_2_MakeCSVfromDB.png)
+
+*Figura 4. Salida inicial de 2_MakeCSV_From_DB.py muestra parámetros de conexión a la base de datos para extraer series de datos de contaminantes.*
+
+![Salida de archivos CSV por estación y contaminante](4_output_DB2CSV1.png)
+
+*Figura 5. Ejemplo de archivos CSV generados por estación y contaminante a partir de la base de datos histórica.*
 
 ### 3. Configuración: Archivo JSON
 - **Función:** Define parámetros de entrenamiento
@@ -132,6 +152,14 @@ Se enlistan pasos principales scripts y configuracioens relevantes para cada pas
   4. Ejecuta entrenamiento (bucle de épocas, batches, pasos autorregresivos)
   5. Guarda checkpoints del modelo
 - **Salida:** Modelo entrenado (`model_best.pth`), archivos de normalización, logs
+
+![Lanzamiento del entrenamiento desde la línea de comandos](5_train_launch.png)
+
+*Figura 6. Ejemplo de ejecución del script de entrenamiento `4_train.py` con el archivo de configuración JSON.*
+
+![Monitoreo del proceso de entrenamiento](6_training_monitor.png)
+
+*Figura 7. Ejemplo de monitoreo del entrenamiento mostrando métricas y progreso de épocas/batches. se muestra path con salidas de modelos entrenados.*
 
 ### 5. Evaluación: `5_test.py`
 - **Función:** Evalúa modelo entrenado y genera CSVs de evaluación
@@ -178,7 +206,7 @@ Se enlistan pasos principales scripts y configuracioens relevantes para cada pas
 
 Para más información ver documentación del configuración ./docs/ARCHIVO_config_json.md
 
-### Rutas Importantes:
+### Rutas:
 - netCDFs procesados: `{output_folder}/{YYYY-MM-DD}.nc`
 - CSVs de contaminación: `{output_folder}/{contaminante}_{estacion}.csv`
 - Modelo entrenado: `{save_dir}/model_best.pth`

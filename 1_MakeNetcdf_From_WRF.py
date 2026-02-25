@@ -157,16 +157,16 @@ def process_single_year(args):
         print(f"Processing year {year} with old WRF format")
         mode = wrfFileType.old
         # input_folder = '/unity/f1/ozavala/DATA/AirPollutionData/WRF_Data/RESPALDO_V4' # Path in Skynet
-        # input_folder = '/ServerData/CHACMOOL/Reanalisis/RESPALDO_V4' # Path to ZION
-        input_folder = '/CHACMOOL/DATOS/RESPALDO_V4' # Path in Quetzal
+        input_folder = '/ServerData/CHACMOOL/Reanalisis/RESPALDO_V4' # Path to ZION
+        # input_folder = '/CHACMOOL/DATOS/RESPALDO_V4' # Path in Quetzal
         result_dates, result_files, result_files_coords, result_paths = read_wrf_old_files_names(
             input_folder, f'{year}-01-01', f'{year + 1}-01-01')
     else:
         print(f"Processing year {year} with new WRF format")
         mode = wrfFileType.new
-        # input_folder = '/ServerData/WRF_2017_Kraken' # Path to ZION
+        input_folder = '/ServerData/WRF_2017_Kraken' # Path to ZION
         # input_folder = '/unity/f1/ozavala/DATA/AirPollutionData/WRF_Data/WRF_2017_Kraken'
-        input_folder = '/LUSTRE/OPERATIVO/EXTERNO-salidas/WRF' # Path in Quetzal
+        # input_folder = '/LUSTRE/OPERATIVO/EXTERNO-salidas/WRF' # Path in Quetzal
         result_dates, result_files, result_paths = read_wrf_files_names(
             input_folder, f'{year}-01-01', f'{year + 1}-01-01')
         result_files_coords = None
@@ -245,14 +245,16 @@ if __name__== '__main__':
     # output_folder = '/unity/f1/ozavala/DATA/AirPollutionData/Preproc/WRF_NetCDF'
     # output_folder_imgs= '/unity/f1/ozavala/DATA/AirPollutionData/Preproc/WRF_NetCDF_imgs'
 
-    output_folder = '/home/olmozavala/DATA/AirPollution/WRF_NetCDF'
-    output_folder_imgs= '/home/olmozavala/DATA/AirPollution/WRF_NetCDF_imgs'
+    # output_folder = '/home/olmozavala/DATA/AirPollution/WRF_NetCDF'
+    output_folder = '/home/pedro/netcdf_test'
+    # output_folder_imgs= '/home/olmozavala/DATA/AirPollution/WRF_NetCDF_imgs'
+    output_folder_imgs= '/home/pedro/netcdf_test_imgs'
 
     resolution = 1/20 # degrees
     sm_bbox = [18.75, 20,-99.75, -98.5]
     large_bbox = [14.568, 21.628, -106.145, -93.1004]
     bbox = sm_bbox
-    years = range(2010, 2025)
+    years = range(2024, 2026)
     # years = [2021]
     generate_images = True
     parallel = False
