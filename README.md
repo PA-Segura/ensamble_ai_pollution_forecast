@@ -110,5 +110,4 @@ Ver `docs/` para documentación detallada:
 - `ARCHIVO_config_json.md` — Estructura y campos del archivo JSON de configuración
 - `FLUJO_ENTRENAMIENTO_RESUMEN.md` — Flujo resumido de entrenamiento
 - `FLUJO_PRONOSTICO_OPERATIVO_RESUMEN.md` — Flujo resumido del pronóstico operativo
-- `README_parallel_training.md` — Entrenamiento paralelo con barrido de hiperparámetros
 - `config_and_train.md` — Configuración y entrenamiento del framework
