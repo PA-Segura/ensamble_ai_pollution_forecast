@@ -48,8 +48,6 @@ Este repositorio contien el código fuente para un sistema de pronóstico de con
 5_test.py  -c config.json  →  Evalúa modelo, genera CSVs de predicciones
 ```
 
-Para barrido de hiperparámetros: `4b_parallel_training.py` genera variantes de `config.json` y ejecuta entrenamientos en paralelo distribuyendo GPUs.
-
 ### Pronóstico operativo
 
 ```
@@ -100,9 +98,6 @@ python 4_train.py -c config.json
 
 # Evaluación
 python 5_test.py -c config.json
-
-# Entrenamiento paralelo (barrido de hiperparámetros)
-python 4b_parallel_training.py --config config.json --max-parallel 4
 
 # Pronóstico operativo
 python run_forecast_hourly.py
